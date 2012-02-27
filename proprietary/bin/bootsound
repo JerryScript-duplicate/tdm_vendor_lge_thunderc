@@ -1,6 +1,0 @@
-#!/system/bin/sh
-play=$(getprop persist.sys.bootsound)
-if [ "$play" = "1" ]; then
-       stagefright -a -o /system/media/android_audio.mp3
-fi
-exit 0
