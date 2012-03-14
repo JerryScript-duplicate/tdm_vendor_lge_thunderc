@@ -1,4 +1,4 @@
-on early-fs
+on boot-pause
     exec sbin/chargerlogo
 
 service bootlogo /sbin/bootlogo
