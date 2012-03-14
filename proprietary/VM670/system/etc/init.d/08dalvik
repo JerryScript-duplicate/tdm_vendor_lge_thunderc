@@ -1,0 +1,21 @@
+#!/system/bin/sh
+
+# Figure out where dalvik-cache should live
+dc=/cache/dalvik-cache
+busybox mountpoint /sd-ext >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+	dc="/sd-ext/dalvik-cache"
+fi
+
+# Prep dalvik-cache
+if [ ! -d "$dc" ]; then
+	busybox rm -rf "$dc" /data/dalvik-cache
+	mkdir "$dc" /data/dalvik-cache
+fi
+busybox chown 1000:1000 "$dc"
+busybox chmod 0771 "$dc"
+
+# bind mount dalvik-cache so we can still boot without the sdcard
+busybox mount -o bind "$dc" /data/dalvik-cache
+busybox chown 1000:1000 /data/dalvik-cache
+busybox chmod 0771 /data/dalvik-cache

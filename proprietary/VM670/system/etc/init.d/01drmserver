@@ -1,0 +1,10 @@
+#!/system/bin/sh
+
+
+mount -o remount,rw -t rfs /dev/stl5 /system
+chmod 777 /system/bin/drmserver
+./system/bin/drmserver&
+
+
+
+
