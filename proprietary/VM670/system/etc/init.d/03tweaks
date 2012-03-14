@@ -1,0 +1,4 @@
+#!/system/bin/sh
+
+sleep 5
+sh /system/etc/tweaks.sh
