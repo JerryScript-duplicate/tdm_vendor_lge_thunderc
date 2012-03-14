@@ -1,5 +1,13 @@
-on boot-pause
+on charger
     exec sbin/chargerlogo
+
+service bootlogo /sbin/bootlogo
+    user root
+    group root
+    oneshot
+
+on early-boot
+    start bootlogo
 
 on boot
 
